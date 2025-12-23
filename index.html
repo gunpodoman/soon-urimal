@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>일본어 퀴즈 올스타 (Simple Ver.)</title>
+    <title>일본어 기말범위 올스타 (Direct Mode)</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -11,22 +11,21 @@
 
     <script>
         /**
-         * 💡 데이터 수정 구역
-         * q: 문제 (화면 중앙에 크게 나옴)
-         * a: 정답 (사용자가 입력할 정확한 값)
+         * 💡 단어 데이터 수정 구역
+         * q: 문제, a: 정답 (공백은 자동으로 무시됩니다)
          */
         const vocabData = [
             { q: "いちねんせい", a: "1학년" },
-            { q: "十二", a: "じゅうに" },
-            { q: "Apple", a: "사과" },
-            { q: "にねんせい", a: "2학년" }
+            { q: "二年生", a: "にねんせい" },
+            { q: "十二", a: "じゅう니" },
+            { q: "Apple", a: "사과" }
         ];
     </script>
 
     <div class="container" id="quiz-screen">
         <header>
             <div class="status">
-                <span id="mode-title">QUIZ MODE</span>
+                <span id="mode-title">STAGE 1</span>
                 <span id="remain-num">남은 문제 확인 중...</span>
             </div>
             <div class="progress-wrapper">
@@ -60,7 +59,6 @@
         </div>
 
         <button class="btn" onclick="location.reload()" style="margin-top: 20px;">다시 도전하기</button>
-        <button class="btn home-btn" onclick="location.reload()">처음으로</button>
     </div>
 
     <script src="script.js"></script>
