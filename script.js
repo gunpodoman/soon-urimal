@@ -20,7 +20,7 @@ const dom = {
     wrongList: document.getElementById('wrong-list')
 };
 
-// 시작 시 자동 실행
+// 페이지 로드 시 즉시 시작
 window.onload = () => {
     quizQueue = [...vocabData].sort(() => Math.random() - 0.5);
     showQuestion();
@@ -53,6 +53,7 @@ function checkAnswer() {
     if (!inputVal) return;
 
     const currentData = quizQueue[currentIndex];
+    // 공백 무시하고 정답 체크
     const isCorrect = (inputVal.replace(/\s+/g, '') === currentData.a.replace(/\s+/g, ''));
 
     isWaitingNext = true;
@@ -61,15 +62,15 @@ function checkAnswer() {
     if (isCorrect) {
         score++;
         dom.input.classList.add('correct');
-        dom.feedback.innerHTML = '<span class="msg-success">정답입니다!</span>';
+        dom.feedback.innerHTML = '<span class="msg-success">정답입니다! 🎉</span>';
         dom.btn.style.background = 'var(--success)';
     } else {
         dom.input.classList.add('wrong');
-        dom.feedback.innerHTML = `<span class="msg-error">오답! 정답: ${currentData.a}</span>`;
+        dom.feedback.innerHTML = `<span class="msg-error">오답! 정답: [${currentData.a}]</span>`;
         dom.btn.style.background = 'var(--error)';
         wrongList.push({ q: currentData.q, a: currentData.a, u: inputVal });
     }
-    dom.btn.innerText = '다음 문제 (Enter)';
+    dom.btn.innerText = '다음 문제 (Enter ↵)';
 }
 
 function nextQuestion() {
@@ -89,8 +90,8 @@ function finishQuiz() {
         dom.wrongBox.style.display = 'block';
         dom.wrongList.innerHTML = wrongList.map(item => `
             <div class="wrong-item">
-                <strong>Q: ${item.q}</strong><br>
-                정답: ${item.a} / 내 답: <span style="color:red">${item.u}</span>
+                <div class="w-jp">${item.q}</div>
+                <div>정답: ${item.a} / 내 답: <span style="color:#ef4444">${item.u}</span></div>
             </div>
         `).join('');
     }
