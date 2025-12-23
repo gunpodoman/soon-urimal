@@ -20,8 +20,8 @@ const dom = {
     wrongList: document.getElementById('wrong-list')
 };
 
-// 페이지 로드 시 즉시 시작
 window.onload = () => {
+    // 시작과 동시에 랜덤 섞기
     quizQueue = [...vocabData].sort(() => Math.random() - 0.5);
     showQuestion();
 };
@@ -53,8 +53,10 @@ function checkAnswer() {
     if (!inputVal) return;
 
     const currentData = quizQueue[currentIndex];
-    // 공백 무시하고 정답 체크
-    const isCorrect = (inputVal.replace(/\s+/g, '') === currentData.a.replace(/\s+/g, ''));
+    const cleanInput = inputVal.replace(/\s+/g, '');
+    const cleanAns = currentData.a.replace(/\s+/g, '');
+    
+    const isCorrect = (cleanInput === cleanAns);
 
     isWaitingNext = true;
     dom.input.disabled = true;
@@ -90,13 +92,18 @@ function finishQuiz() {
         dom.wrongBox.style.display = 'block';
         dom.wrongList.innerHTML = wrongList.map(item => `
             <div class="wrong-item">
-                <div class="w-jp">${item.q}</div>
-                <div>정답: ${item.a} / 내 답: <span style="color:#ef4444">${item.u}</span></div>
+                <div>
+                    <div class="w-jp">${item.q}</div>
+                    <div style="font-size:0.85rem; color:#6b7280;">정답: ${item.a}</div>
+                </div>
+                <div style="color:#ef4444; font-size:0.8rem;">내 답: ${item.u}</div>
             </div>
         `).join('');
     }
 }
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && dom.screenQuiz.style.display !== 'none') handleAction();
+    if (e.key === 'Enter') {
+        if (dom.screenQuiz.style.display !== 'none') handleAction();
+    }
 });
