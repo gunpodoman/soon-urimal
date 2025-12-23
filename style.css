@@ -1,0 +1,54 @@
+:root {
+    --primary: #6366f1;
+    --success: #10b981;
+    --error: #ef4444;
+    --bg: linear-gradient(135deg, #f3f4f6 0%, #d1d5db 100%);
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.status { font-size: 0.9rem; color: #666; margin-bottom: 8px; text-align: right; }
+.progress-wrapper { background: #eee; height: 6px; border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
+.progress-bar { height: 100%; background: var(--primary); width: 0%; transition: 0.3s; }
+
+.question-card { background: #f9fafb; padding: 2rem 1rem; border-radius: 15px; margin-bottom: 1.5rem; }
+.q-text { font-size: 2rem; font-weight: bold; color: #1f2937; word-break: keep-all; }
+
+input[type="text"] {
+    width: 100%; padding: 12px; font-size: 1.1rem; border: 2px solid #ddd;
+    border-radius: 10px; box-sizing: border-box; outline: none; text-align: center;
+}
+input.correct { border-color: var(--success); background: #f0fdf4; }
+input.wrong { border-color: var(--error); background: #fef2f2; }
+
+.feedback-msg { height: 24px; margin-bottom: 10px; font-weight: bold; }
+.msg-success { color: var(--success); }
+.msg-error { color: var(--error); }
+
+.btn {
+    width: 100%; padding: 14px; border: none; border-radius: 10px;
+    background: var(--primary); color: white; font-size: 1rem; font-weight: bold;
+    cursor: pointer; transition: 0.2s;
+}
+
+.score-display { font-size: 3rem; font-weight: 800; color: var(--primary); margin: 10px 0; }
+.wrong-answers-container { text-align: left; background: #f9fafb; padding: 10px; border-radius: 10px; margin: 15px 0; max-height: 200px; overflow-y: auto; font-size: 0.9rem; }
+.wrong-item { padding: 8px 0; border-bottom: 1px solid #eee; }
