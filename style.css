@@ -96,6 +96,10 @@ input[type="text"] {
     transition: all 0.2s ease;
 }
 
+.input-group {
+    margin-bottom: 24px; 
+}
+
 input.correct { border-color: var(--success); background-color: #ecfdf5; color: var(--success); }
 input.wrong { 
     border-color: var(--error); background-color: #fef2f2; color: var(--error);
