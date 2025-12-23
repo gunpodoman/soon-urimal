@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>심플 퀴즈 생성기</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <script>
+        /**
+         * 💡 데이터 수정 구역
+         * q: 문제, a: 정답 (딱 두 개만 적으세요)
+         */
+        const vocabData = [
+            { q: "いちねんせい", a: "1학년" },
+            { q: "Apple", a: "사과" },
+            { q: "7 + 8", a: "15" },
+            { q: "대한민국의 수도는?", a: "서울" }
+        ];
+    </script>
+
+    <div class="container">
+        <div id="quiz-screen">
+            <header>
+                <div class="status">
+                    <span id="remain-num">문제 로딩 중...</span>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </header>
+
+            <div class="question-card">
+                <div class="q-text" id="question-text"></div>
+            </div>
+
+            <div class="feedback-msg" id="feedback"></div>
+
+            <div class="input-group">
+                <input type="text" id="answer-input" placeholder="정답을 입력하세요" autocomplete="off">
+            </div>
+
+            <button class="btn" id="action-btn" onclick="handleAction()">제출하기 (Enter)</button>
+        </div>
+
+        <div id="result-screen" style="display: none;">
+            <h1>테스트 완료!</h1>
+            <div class="score-display"><span id="final-score">0</span>점</div>
+            <p><span id="correct-cnt">0</span> / <span id="total-cnt">0</span> 정답</p>
+
+            <div class="wrong-answers-container" id="wrong-box" style="display: none;">
+                <h4 style="margin:0 0 10px 0;">오답 노트</h4>
+                <div id="wrong-list"></div>
+            </div>
+
+            <button class="btn" onclick="location.reload()">다시 시작하기</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
